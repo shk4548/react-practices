@@ -16,3 +16,8 @@ ex04: 애플리케이션 번들링(bundling)
 5. 자바스크립트 뿐만 아니라 다양한 에셋(image, css, font)들도 모듈로 취급한다.
 
 6. 설치
+    $ npm i -D webpack webpack-cli
+    $ npm .\node_modules\.bin\webpack --version
+    $ npx webpack --version
+
+    $ npx webpack ./src/index.js -o ./public

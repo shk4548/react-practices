@@ -1,5 +1,6 @@
 const App = function(){
-    // app rendering
+        // app rendering
+
     const App = document.createElement('h1');
     App.textContent = 'Hello World';
 
