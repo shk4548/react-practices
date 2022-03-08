@@ -21,3 +21,7 @@ ex04: 애플리케이션 번들링(bundling)
     $ npx webpack --version
 
     $ npx webpack ./src/index.js -o ./public
+
+
+7. package.json scripting("build" stage)
+    $ npm build  // main.js 생성됨

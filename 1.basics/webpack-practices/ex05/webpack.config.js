@@ -1,24 +1,23 @@
 const path = require('path');
 
 module.exports = {
-    mode : 'development',
-    entry : path.resolve('src/index.js'),
-    output : {
+    mode: 'development',
+    entry: path.resolve('src/index.js'),
+    output: {
         path: path.resolve('public'),
         filename: 'bundle.js'
-
     },
-    module : {
+    module: {
         rules:[{
-            test: /\.(sa|sc|c)ss$/i,    // .css 로 끝난다, i -> ignore 대문자 소문자 상관없이
-            use: ['style-loader','css-loader', 'sass-loader','scss-loader']
+            test: /\.(sa|sc|c)ss$/i,
+            use: ['style-loader', 'css-loader', 'sass-loader']
         }]
     },
-    devServer : {
-        host : '0.0.0.0',
-        port : 9090,
-        liveReload : true, 
+    devServer: {
+        host: '0.0.0.0',
+        port: 9090,
+        liveReload: true,
         hot: false,
         compress: true
-    }
+    } 
 }
