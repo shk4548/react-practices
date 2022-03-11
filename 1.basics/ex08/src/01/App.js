@@ -17,7 +17,7 @@ const App = function(){
             <br/>
             <hr/>
             <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png'/>
-            
+                
             {/*
                 3. 속성 이름은 DOM API 기반이다. (HTML Tag 기반 x) 
                 <div id ='box' class='box'>...</div>
