@@ -8,8 +8,12 @@ ex02: Component Styling(Working with UI)
 04. CSS Module (css loader options: {module: true})
     - $ npm run debug src=04 css-modules=true
 05. SACC & SCSS
-06.
-07.
+    - $ npm run debug src=05 css-modules=true
+---------------------------------------------------
+CSS in JS (Style Component), Less & Styleable
+---------------------------------------------------
+06. Font Awesome : Working with UI I
+07. Font Awesome : 
 08.
 
 1. 설치
