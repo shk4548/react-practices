@@ -4,7 +4,7 @@ import Card from './Card'
 
 
 const CardList = ({title,cards}) => {  // property 공법 // cards는 map사용
-  console.log(title,cards + "아아")
+  // console.log(title,cards + "CardList")
 
   return (
     <div className={styles.CardList}>
@@ -13,6 +13,8 @@ const CardList = ({title,cards}) => {  // property 공법 // cards는 map사용
         {cards.map((card) => <Card 
                                 titles = {card.title}
                                 description = {card.description}
+                                tasks =  {card.tasks}
+                                key = {card.no}
         />)}
         </div>
 

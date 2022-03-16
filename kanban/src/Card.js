@@ -1,19 +1,23 @@
 import React from 'react'
+import TaskList from './TaskList'
 import styles from './assets/css/Card.css'
-import cards from './data.json'
 
-const Card = () => {
+const CardList = ({titles, description, tasks}) => {
+
+  //console.log(titles, cards + "Card");
+
   return (
     <div className={styles.Card}>
-      <div>
-        {cards.titles}
-        {cards.description}
-      </div>
-
-
-
+      <div className={styles.Card__Title }>{titles}</div>
+      <div>{description}</div>
+        <ul>
+        {tasks.map((task => <TaskList
+                                name = {task.name}
+                                done = {task.done}
+                                key = {task.no} /> ))}
+        </ul>
     </div>
   )
 }
 
-export default Card
+export default CardList
