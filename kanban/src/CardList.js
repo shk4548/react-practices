@@ -20,6 +20,7 @@ const CardList = ({title,cards}) => {  // property 공법 // cards는 map사용
 
 
     </div>
+    
 
   )
 }
