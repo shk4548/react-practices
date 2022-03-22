@@ -1,13 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
+import FoodListItem from './FoodListItem';
 
 const FoodList = ({foods}) => {
-    render(
-        // map 사용
-            <ul>
-                {foods.map((food) => <FoodListItem 
-                                                        name = {food.name} 
-                                                        quantity={food.quantity} /> )}
-            </ul>
-        )
-    }
-export defualt FoodList;
+  return (
+    <ul>
+        {foods.map((food) => <FoodListItem
+                                no={food.no}
+                                name={food.name}
+                                quantity={food.quantity} />)}
+    </ul>   
+  )
+}
+
+export default FoodList

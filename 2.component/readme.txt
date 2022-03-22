@@ -1,20 +1,20 @@
 React Practices - Component
 
-ex01 : Property
-    1. Component 작성법
-    2. Data Flow: Top -> Down
+ex01: Property
+    1.  Component 작성법
+    2.  Data Flow: Top -> Down
 
-ex02 : Component Styling
+ex02: Component Styling
 
-ex03 : React Event
+ex03: React Event
 
-ex04 : State***
+ex04: State***
 
-ex05 : Component Lifecycle
+ex05: Immutability(불변성) of Component's State
 
-ex06 : Imutability(불변성) of Component's State
+ex05: Component Lifecycle
 
-AJAX : fetch(ES6 표준), axios
+AJAX: fetch(ES6 표준), axios
 
 kanbanboard
 emaillist
