@@ -3,8 +3,7 @@ import CardList from './CardList'
 import styles from './assets/css/KanbanBoard.css'
 // import cards from './data.json'
 
-const KanbanBoard = () => {
-  console.log(cards);
+const KanbanBoard = ({cards}) => {
   // cards 구분 -> filter , map
 
   // filter 의 예

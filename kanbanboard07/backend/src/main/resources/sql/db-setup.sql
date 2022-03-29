@@ -34,7 +34,4 @@ insert into task values(null, '스터디 계획:책선정,목표과제선정', '
 insert into task values(null, '1주차 시행', 'N', 3);
 insert into task values(null, '프로젝트 적용 - 프로토타입 작성', 'N', 3);
 insert into task values(null, 'bootstarp 테마 찾기', 'N', 4);
-insert into task values(null, '스토리 보드 화면에 맞게 수정', 'N', 4);
-
-
-
+insert into task values(null, '스토리 보드 화면에 맞게 수정', 'N', 4);	
