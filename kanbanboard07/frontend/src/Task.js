@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './assets/css/Task.css'
 
-const TaskList = ({name, done}) => {
+const TaskList = ({name, done, callback, no}) => {
     // console.log(name, done + "task") 
     const [stateDone, setStateDone] = useState(done);
 
@@ -19,7 +19,10 @@ const TaskList = ({name, done}) => {
               onChange={e => setStateDone(!stateDone)}/>
               
             {name}
-         <a href='#' className={styles.TaskList__Task__remove}></a>
+         <a href='#' className={styles.TaskList__Task__remove}
+            onClick = {() => {
+              callback.delete(no)
+            }}></a>
     </li>
     )
   }

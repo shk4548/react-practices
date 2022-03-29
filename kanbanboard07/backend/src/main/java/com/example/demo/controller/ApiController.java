@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,14 +49,22 @@ public class ApiController {
 	}
 	
 	@PostMapping("/card/{no}")
-	public ResponseEntity<JsonResult> createTask( CardVo cardVo,
-						@RequestBody TaskVo taskVo) {
+	public ResponseEntity<JsonResult> createTask(@RequestBody TaskVo taskVo) {
 //		taskVo.setCard_no(cardVo.getNo());
-		
 		
 		taskRepository.insert(taskVo);
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(JsonResult.success(taskVo));
 	}
+	
+	@DeleteMapping("/task/delete/{no}")
+	public ResponseEntity<JsonResult> deleteTask(Long no){
+		
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(JsonResult.success(taskRepository.delete(no)));
+	}
+	
+//	@PutMapping("")
 }

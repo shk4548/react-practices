@@ -12,8 +12,11 @@ const TaskList = ({tasks, no , callback}) => {
         <ul>
             {tasks.map(task => <Task
                                     key={task.no}
+                                    no={task.no}
                                     name={task.name}
                                     done={task.done}
+                                    callback ={{
+                                      delete : callback.delete}}
                                     /> )}
 
        
@@ -37,7 +40,7 @@ const TaskList = ({tasks, no , callback}) => {
                         card_no : no
                       }
 
-                      callback(newTask);
+                      callback.insert(newTask);
                       e.target.value = '';
                     } catch(err) {
                       console.log(err.message);

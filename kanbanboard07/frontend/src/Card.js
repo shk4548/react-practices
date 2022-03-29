@@ -14,6 +14,7 @@ const Card = ({no, titles, description }) => {
     });
   };
   
+  // read
   useEffect(async () => {
     console.log(no);
     try{
@@ -43,7 +44,7 @@ const Card = ({no, titles, description }) => {
 
   }, []);
 
-
+  // insert
   const notifyAddTask = async function(newTask){
     console.log(`post /api/card/${no}`, newTask + "카카카카카카카");
     try{
@@ -71,7 +72,40 @@ const Card = ({no, titles, description }) => {
     } catch(err){
       console.log(err);
     }
+  }
+
+  // delete
+  const deleteTask = async function(taskNo){
+    console.log(`post /api/task/delete/${taskNo}`, taskNo + "카카카카카카카");
+    try{
+      const response = await fetch(`/api/task/delete/${taskNo}` , {
+        method: 'delete',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: null
+      });
   
+      if(!response.ok){
+        throw new Error(`${response.status} ${response.statusText}`)
+      }
+  
+      const json = await response.json(); // 비동기 함수
+      
+      if(json.result !== 'success'){
+        throw new Error(`${json.result} ${json.message}`);
+      }
+      
+      setTasks(tasks.filter(({no}) => {
+        return (no !== taskNo)
+      }));
+    } catch(err){
+      console.log(err);
+    }}
+
+  const updateTask = async function(){
+    
   }
   return (
     <div className={styles.Card}>
@@ -88,7 +122,9 @@ const Card = ({no, titles, description }) => {
             <div className={styles.Card__Details}>
               {description}
               <TaskList tasks = {tasks}
-                        callback = {notifyAddTask} 
+                        callback = {{
+                          insert : notifyAddTask,
+                          delete : deleteTask}} 
                         no = {no}
                         />
             </div> :
@@ -98,4 +134,5 @@ const Card = ({no, titles, description }) => {
     </div>
   );
 };
+
 export default Card;
