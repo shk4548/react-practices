@@ -16,7 +16,8 @@ const TaskList = ({tasks, no , callback}) => {
                                     name={task.name}
                                     done={task.done}
                                     callback ={{
-                                      delete : callback.delete}}
+                                      delete : callback.delete,
+                                      update: callback.update}}
                                     /> )}
 
        

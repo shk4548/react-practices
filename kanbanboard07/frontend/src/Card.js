@@ -76,7 +76,7 @@ const Card = ({no, titles, description }) => {
 
   // delete
   const deleteTask = async function(taskNo){
-    console.log(`post /api/task/delete/${taskNo}`, taskNo + "카카카카카카카");
+    console.log(`delete /api/task/delete/${taskNo}`, taskNo + "카카카카카카카");
     try{
       const response = await fetch(`/api/task/delete/${taskNo}` , {
         method: 'delete',
@@ -104,9 +104,42 @@ const Card = ({no, titles, description }) => {
       console.log(err);
     }}
 
-  const updateTask = async function(){
+    const updateTask = async ( no , done ) => {
+      try {
+        console.log('====================')
+        console.log(no);
+        console.log(done);
+        console.log('====================')
+        const response = await fetch(`/api/task/update/${no}` , {
+          method: 'put',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json'
+          },
+          body: `done=${done}`
+        });
     
-  }
+        if(!response.ok){
+          throw new Error(`${response.status} ${response.statusText}`)
+        }
+    
+        const json = await response.json(); // 비동기 함수
+        
+        if(json.result !== 'success'){
+          throw new Error(`${json.result} ${json.message}`);
+        }
+        
+        setTasks(tasks.map(task => {
+          if(task.no === json.data.no){
+            task.done = json.data.done;
+          }
+
+          return task;
+        }))
+      } catch(err){
+        console.log(err);
+      }
+    }
   return (
     <div className={styles.Card}>
 
@@ -124,7 +157,8 @@ const Card = ({no, titles, description }) => {
               <TaskList tasks = {tasks}
                         callback = {{
                           insert : notifyAddTask,
-                          delete : deleteTask}} 
+                          delete : deleteTask,
+                          update : updateTask}} 
                         no = {no}
                         />
             </div> :
@@ -132,7 +166,6 @@ const Card = ({no, titles, description }) => {
         }
 
     </div>
-  );
-};
-
+  )
+}
 export default Card;
