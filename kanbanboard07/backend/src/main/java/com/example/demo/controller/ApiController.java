@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dto.JsonResult;
 import com.example.demo.repository.CardRepository;
 import com.example.demo.repository.TaskRepository;
-import com.example.demo.vo.CardVo;
 import com.example.demo.vo.TaskVo;
 
 @RequestMapping("/api")
@@ -59,12 +62,28 @@ public class ApiController {
 	}
 	
 	@DeleteMapping("/task/delete/{no}")
-	public ResponseEntity<JsonResult> deleteTask(Long no){
-		
+	public ResponseEntity<JsonResult> deleteTask(@PathVariable (value ="no") Long no){
+		System.out.println(no);
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(JsonResult.success(taskRepository.delete(no)));
 	}
 	
-//	@PutMapping("")
+	@SuppressWarnings("serial")
+	@PutMapping("/task/update/{no}")
+	public ResponseEntity<JsonResult> updateTask(@PathVariable (value = "no") Long no, String done){
+		
+		System.out.println("--------------------------------------------");
+		System.out.println(no + "  " +  done);
+		System.out.println("--------------------------------------------");
+		
+		taskRepository.update(no, done);
+		
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(JsonResult.success(new HashMap<String, Object>() {{
+				    put("no", no);
+				    put("done", done);
+				}}));
+	}
 }

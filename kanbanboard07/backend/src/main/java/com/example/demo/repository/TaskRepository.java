@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,5 +28,12 @@ public class TaskRepository {
 	
 	public Boolean delete(Long no) {
 		return sqlSession.delete("task.delete", no ) == 1;
+	}
+	
+	public Boolean update (Long no, String done) {
+		return sqlSession.update("task.update",new HashMap<String, Object>() {{
+		    put("no", no);
+		    put("done", done);
+		}}) == 1;
 	}
 }

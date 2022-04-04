@@ -37,6 +37,7 @@ const Card = ({no, titles, description }) => {
         throw new Error(`${json.result} ${json.message}`);
       }
 
+      console.log(json.data);
       setTasks(json.data);
     } catch(err){
       console.log(err);

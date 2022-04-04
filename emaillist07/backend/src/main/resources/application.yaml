@@ -3,21 +3,10 @@ spring:
    profiles:
       active: development
 
-   # devtools - live reload
-   devtools:
-      livereload:
-         enabled: true
-
 ---
 # common spring boot configuration
 spring:
    mvc:
-
-      # Spring MVC View Prefix/Suffix
-      view:
-         prefix: /WEB-INF/views/
-         suffix: .jsp
-
       # Path pattern used for static resources
       static-path-pattern: /assets/**
 
@@ -38,16 +27,23 @@ spring:
    # datasource
    datasource:
       driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mysql://192.168.0.57:3307/webdb?characterEncoding=utf8
+      url: jdbc:mysql://192.168.0.51:3307/webdb?characterEncoding=utf8
       username: webdb
       password: webdb
 
+
 ---
-# mybatis
-mybatis:
-   config-location: classpath:mybatis/configuration.xml
-   
----
+# development profile: spring boot configuration
+spring:
+   config:
+      activate:
+         on-profile: development
+
+   # devtools - live reload
+   devtools:
+      livereload:
+         enabled: true
+
 # server
 server:
    port: 8080
@@ -56,9 +52,31 @@ server:
       encoding:
          charset: UTF-8
          enabled: true
+---
+
+# development profile: spring boot configuration
+spring:
+   config:
+      activate:
+         on-profile: production
+         
+# server
+server:
+   port: 9090
+   servlet:
+      context-path: /
+      encoding:
+         charset: UTF-8
+         enabled: true         
+---
+         
+# mybatis
+mybatis:
+   config-location: classpath:mybatis/configuration.xml
+
          
 ---
 # logging
 logging:
-  level:
-    root: WARN
+   level:
+      root: WARN            
