@@ -8,7 +8,7 @@ export default function SearchBar({callback}) {
         <input
           type='text'
           placeholder='찾기'
-          onChange={e => callback(e.target.value)} />
+          onChange={e => callback(e.target.value)}  />
     </div>
   )
 }
