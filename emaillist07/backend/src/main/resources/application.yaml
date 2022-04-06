@@ -1,7 +1,10 @@
-# active spring boot profile
 spring:
-   profiles:
+  application:
+     name: emaillist
+  profiles:
       active: development
+
+
 
 ---
 #
@@ -9,38 +12,20 @@ spring:
 #
 spring:
    mvc:
-      # Path pattern used for static resources
       static-path-pattern: /assets/**
-
-      # Whether a "NoHandlerFoundException" should be thrown if no Handler was found to process a request
       throw-exception-if-no-handler-found: true
    web:
       resources:
-         # Locations of static resources
          static-locations: classpath:/static/
-
    thymeleaf:
       prefix : classpath:templates/
       check-template-location: true
-      mode: HTML5
+      mode: HTML
       suffix : .html
       cache : false
 
-   # datasource
-   datasource:
-      driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mysql://192.168.0.51:3307/webdb?characterEncoding=utf8
-      username: webdb
-      password: webdb
-
-# mybatis
 mybatis:
    config-location: classpath:mybatis/configuration.xml
-
-# logging
-logging:
-   level:
-      root: WARN 
 
 
 
@@ -52,13 +37,15 @@ spring:
    config:
       activate:
          on-profile: development
-
-   # devtools - live reload
    devtools:
       livereload:
          enabled: true
+   datasource:
+      driver-class-name: org.mariadb.jdbc.Driver
+      url: jdbc:mysql://192.168.0.57:3307/webdb?characterEncoding=utf8
+      username: webdb
+      password: webdb
 
-# server
 server:
    port: 8080
    servlet:
@@ -66,6 +53,14 @@ server:
       encoding:
          charset: UTF-8
          enabled: true
+
+logging:
+   pattern:
+      console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n"
+   level:
+      root: INFO 
+
+
 
 ---
 #
@@ -75,12 +70,32 @@ spring:
    config:
       activate:
          on-profile: production
-         
-# server
+   datasource:
+      driver-class-name: org.mariadb.jdbc.Driver
+      url: jdbc:mysql://192.168.0.57:3307/webdb?characterEncoding=utf8
+      username: webdb
+      password: webdb
+               
 server:
    port: 8880
    servlet:
       context-path: /
       encoding:
          charset: UTF-8
-         enabled: true         
+         enabled: true
+         
+logging:
+   pattern:
+      file: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n"
+   logback:
+      rollingpolicy:
+         file-name-pattern: "logs/${spring.application.name}.%d{yyyy-MM-dd}.%i.log.zip"
+   file:
+      name: logs/${spring.application.name}.log
+      max-history: 30
+   level:
+      root: INFO
+      com:
+         example:
+            demo:
+               exception: ERROR
