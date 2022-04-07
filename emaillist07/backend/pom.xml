@@ -105,8 +105,8 @@
 					<executable>npm</executable>
 					<workingDirectory>../frontend</workingDirectory>
 					<arguments>
-						<argument>build</argument>
 						<argument>run</argument>
+						<argument>build</argument>
 					</arguments>
 					<environmentVariables>
 					</environmentVariables>
