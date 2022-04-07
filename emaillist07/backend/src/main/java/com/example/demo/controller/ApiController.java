@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +27,10 @@ public class ApiController {
 	@Autowired
 	private EmaillistRepository emaillistRepository;
 	
+	
 	@GetMapping
 	public ResponseEntity<JsonResult> read(@RequestParam(value="kw", required=true, defaultValue="") String keyword) {
-//		log.info("Request [GET /api]");
+		log.info("Request [GET /api]");
 		
 		
 		return ResponseEntity
