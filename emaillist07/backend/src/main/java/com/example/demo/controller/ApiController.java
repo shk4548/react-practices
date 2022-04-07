@@ -29,9 +29,10 @@ public class ApiController {
 	
 	
 	@GetMapping
-	public ResponseEntity<JsonResult> read(@RequestParam(value="kw", required=true, defaultValue="") String keyword) {
+	public ResponseEntity<JsonResult> read(EmaillistVo vo, @RequestParam(value="kw", required=true, defaultValue="") String keyword) {
 		log.info("Request [GET /api]");
-		
+		System.out.println(vo);
+
 		
 		return ResponseEntity
 				.status(HttpStatus.OK)
@@ -41,6 +42,7 @@ public class ApiController {
 	@PostMapping
 	public ResponseEntity<JsonResult> create(@RequestBody EmaillistVo vo) {
 		emaillistRepository.insert(vo);
+		System.out.println(vo+"-----------------------");
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(JsonResult.success(vo));
