@@ -1,10 +1,10 @@
 {
-  "name": "emaillist-frontend",
+  "name": "emaillist",
   "version": "1.0.0",
-  "description": "1. 설치\r $ npm i -D webpack webpack-cli webpack-dev-server style-loader css-loader node-sass sass-loader babel-loader @babel/core @babel/cli @babel/preset-env @babel/preset-react @babel/plugin-transform-runtime @babel/plugin-syntax-throw-expressions \r $ npm i react react-dom prop-types",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm install && npx webpack --config config/webpack.config.js --progress --mode production",
+    "build": "npm install && npx webpack --config config/webpack.config.js --mode production", 
     "start": "npx webpack serve --config config/webpack.config.js --progress --mode development"
   },
   "keywords": [],
